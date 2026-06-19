@@ -1,0 +1,10 @@
+# C++ 빌드 결과물 및 임시 파일 제외
+*.exe
+*.o
+*.obj
+*.out
+
+# VS Code IntelliSense/디버그 임시 데이터베이스
+.vscode/ipch/
+.vscode/.browse.VC.db
+.vscode/Browse.VC.db
