@@ -1,0 +1,55 @@
+//정주호
+//MIN Array Sort program => Use function
+#include <iostream>
+#define ARRSIZE 10
+using namespace std;
+void getArray(int iNum[]); // 배열 입력 함수
+void prnArray(int iNum[]); // 배열 출력 함수 ... or (int *iNum) 
+void sortArray(int iNum[]); // 배열 정렬 함수 ...
+void main()
+{
+	int iNum[ARRSIZE];
+	getArray(iNum);
+	prnArray(iNum);
+	sortArray(iNum);
+	prnArray(iNum);
+}
+void prnArray(int iNum[])
+{
+	for (int k = 0; k < ARRSIZE; ++k)
+	{
+		cout << iNum[k] << " ";
+	}
+	cout << endl;
+}
+void sortArray(int iNum[])
+{
+	int iMin, iIndex, iTemp;
+	for (int iLoop = 0; iLoop < ARRSIZE; ++iLoop)
+	{
+		iMin = iNum[iLoop];
+		iIndex = iLoop;
+		for (int j = iLoop; j < ARRSIZE; ++j)
+		{
+			if (iMin > iNum[j])
+			{
+				iMin = iNum[j];
+				iIndex = j;
+			}
+		}
+		cout << "[최솟값] : " << iMin << " , [인덱스] : " << iIndex << endl;
+		iTemp = iNum[iLoop];
+		iNum[iLoop] = iNum[iIndex];
+		iNum[iIndex] = iTemp;
+
+		prnArray(iNum);
+	}
+}
+void getArray(int iNum[]) 
+{
+	cout << "정수 10개 입력 : ";
+	for (int i = 0; i < ARRSIZE; ++i)
+	{
+		cin >> iNum[i];
+	}
+}

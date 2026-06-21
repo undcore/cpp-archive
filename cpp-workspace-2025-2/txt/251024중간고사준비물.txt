@@ -1,0 +1,144 @@
+//정주호
+/*	다음과 같이 0~9 사이의 정수를 입력받아 배열에 저장하고, 
+	중복 입력된 정수와 입력되지 않은 정수를 출력하고자 한다
+	예)
+	2 6 3 7 9 5 3 8 5 0
+	중복입력된 정수 : 3 5
+	입력되지 않은 정수 : 1 4							
+	>>조건
+	>>조건												*/
+#include <iostream>
+using namespace std;
+#define ARRSIZE 10
+int main() 
+{
+	int iNo[ARRSIZE];
+	int iCount[ARRSIZE] = { 0 };
+	bool bIsDuplicate = false;
+	bool bIsNotInput = false;
+	cout << "0~9 사이의 정수 입력 : ";
+	// 0~9 사이의 정수를 입력받아 배열에 저장	
+	for (int i = 0; i < ARRSIZE; ++i)
+	{
+		cin >> iNo[i];
+		if (iNo[i] >= 0 && iNo[i] <= 9) 
+		{
+			iCount[iNo[i]]++;
+		}
+	}
+	cout << endl;
+	// 중복 입력된 정수 처리 및 출력
+	cout << "중복 입력된 정수 : ";
+	for (int j = 0; j < ARRSIZE; ++j) 
+	{
+		if (iCount[j] > 1) 
+		{
+			cout << j << " ";
+			bIsDuplicate = true;
+		}
+	}
+	if (!bIsDuplicate) 
+	{
+		cout << "중복 입력된 정수 없음";
+	}
+	cout << endl;
+	// 입력되지 않은 정수 처리 및 출력
+	cout << "입력되지 않은 정수 : ";
+	for (int k = 0; k < ARRSIZE; ++k)
+	{
+		if (iCount[k] == 0)
+		{
+			cout << k << " ";
+			bIsNotInput = true;
+		}
+	}	
+	if (!bIsNotInput) 
+	{
+			cout << "0~9 사이에서 입력되지 않은 정수 없음";
+		
+	}
+}
+/*
+void getAndCount(int iCount[])
+int iInput;
+cout << "0~9 사이의 정수 10개를 입력하세요:" << endl;
+
+for (int i = 0; i < ARRSIZE;)
+{
+	cout << i + 1 << "번째 정수 입력: ";
+	cin >> iInput;
+
+	// 입력 값 
+	if (iInput >= 0 && iInput <= 9)
+	{
+		// 유효한 입력만 카운팅 배열에 저장
+		iCount[iInput]++;
+		i++; // 
+	}
+	else
+	{
+		// 범위 초과 처리 
+		cout << "[경고] 0~9 사이의 정수만 입력해야 합니다. 해당 입력은 무시됩니다." << endl;
+	}
+}
+cout << endl; 
+
+void prnDuplicates(int iCount[])
+{
+	bool bIsDuplicate = false;
+
+	cout << "중복 입력된 정수: ";
+	// 카운팅 배열을 0부터 9까지 순회하여 횟수가 1을 초과하는 경우 출력
+	for (int j = 0; j < ARRSIZE; ++j)
+	{
+		// 2개 이상 입력된 경우 중복으로 처리
+		if (iCount[j] > 1)
+		{
+			cout << j << " "; // j가 곧 중복된 정수이며, 순서대로 출력되어 정렬 조건 충족
+			bIsDuplicate = true;
+		}
+	}
+	if (!bIsDuplicate)
+	{
+		cout << "중복 입력된 정수 없음";
+	}
+	cout << endl;
+}
+void prnMissing(int iCount[])
+{
+	bool bIsNotInput = false;
+
+	cout << "입력되지 않은 정수: ";
+	// 카운팅 배열을 0부터 9까지 순회하여 횟수가 0인 경우 출력
+	for (int k = 0; k < ARRSIZE; ++k)
+	{
+		// 0개 입력된 경우 미입력 정수로 처리
+		if (iCount[k] == 0)
+		{
+			cout << k << " "; // k가 곧 미입력 정수이며, 순서대로 출력되어 정렬 조건 충족
+			bIsNotInput = true;
+		}
+	}
+	if (!bIsNotInput)
+	{
+		cout << "0~9 사이에서 입력되지 않은 정수 없음";
+	}
+	cout << endl;
+}
+int main()
+{
+	// int iNo[ARRSIZE]; // 이 배열은 iCount 배열을 사용하므로 생략 가능
+	int iCount[ARRSIZE] = { 0 }; // 0~9까지 숫자의 등장 횟수를 저장하는 카운팅 배열
+
+	// 1. 입력 및 카운팅 처리 (함수 호출)
+	getAndCount(iCount);
+
+	// 2. 중복 입력된 정수 출력 (함수 호출)
+	prnDuplicates(iCount);
+
+	// 3. 입력되지 않은 정수 출력 (함수 호출)
+	prnMissing(iCount);
+
+	return 0;
+}
+*/

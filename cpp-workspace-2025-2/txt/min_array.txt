@@ -1,0 +1,40 @@
+#include <iostream>
+#define ARRSIZE 10
+using namespace std;
+int main()
+{
+	int iNum[ARRSIZE] = { 5, 2, 9, 2, 8, 1, 4, 7, 6, 9 };
+	int iMin, iIndex, iTemp;
+	// 배열 입력
+	for (int i = 0; i < ARRSIZE; ++i) {
+		cin >> iNum[i];
+	}
+	// 배열 출력
+	for (int k = 0; k < ARRSIZE; ++k) {
+		cout << iNum[k] ;
+	}
+	cout << endl;
+
+
+	for (int iLoop = 0; iLoop < ARRSIZE; ++iLoop) 
+	{
+		iMin = iNum[iLoop];
+		for (int j = iLoop; j < ARRSIZE; ++j)
+		{
+			if (iMin > iNum[j])
+			{
+				iMin = iNum[j];
+				iIndex = j;
+			}
+		}
+		cout << "최솟값은" << " " << iMin << " " << "인덱스값은" << iIndex << endl;
+		iTemp = iNum[iLoop];
+		iNum[iLoop] = iNum[iIndex];
+		iNum[iIndex] = iTemp;
+
+
+		for (int k = 0; k < ARRSIZE; ++k) {
+			cout << iNum[k];
+		}
+		cout << endl;
+	}
